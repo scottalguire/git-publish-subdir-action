@@ -404,7 +404,9 @@ const writeToProcess = (command: string, args: string[], opts: { env: { [id: str
   const folder = path.resolve(process.cwd(), config.folder);
   console.log(`##[info] Copying all files from ${folder}`);
   // TODO: replace this copy with a node implementation
-  await exec(`cp -rvT ${folder}/* ./`, { env, cwd: REPO_TEMP });
+  const { stdout, stderr } = await exec(`cp -rvT ${folder}/* ./`, { env, cwd: REPO_TEMP });
+  console.log('stdout:', stdout);
+  console.error('stderr:', stderr);
   await exec(`git add -A .`, { env, cwd: REPO_TEMP });
   const message =
     config.message
