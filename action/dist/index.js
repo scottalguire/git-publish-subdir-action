@@ -8282,6 +8282,7 @@ var writeToProcess = function (command, args, opts) { return new Promise(functio
                 return [4 /*yield*/, exec("git rm -rf .", { env: env, cwd: REPO_TEMP }).catch(function (err) { })];
             case 25:
                 _h.sent();
+                console.log("##[info] cwd: " + process.cwd());
                 folder = path.resolve(process.cwd(), config.folder);
                 console.log("##[info] Copying all files from " + folder);
                 return [4 /*yield*/, exec("rsync -avz " + folder + "/ ./ --exclude=\".git\"", { env: env, cwd: REPO_TEMP })];

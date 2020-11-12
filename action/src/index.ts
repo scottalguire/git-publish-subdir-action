@@ -401,6 +401,7 @@ const writeToProcess = (command: string, args: string[], opts: { env: { [id: str
   // Update contents of branch
   console.log(`##[info] Updating branch ${config.branch}`);
   await exec(`git rm -rf .`, { env, cwd: REPO_TEMP }).catch(err => { });
+  console.log(`##[info] cwd: ${process.cwd()}`)
   const folder = path.resolve(process.cwd(), config.folder);
   console.log(`##[info] Copying all files from ${folder}`);
   // TODO: replace this copy with a node implementation
