@@ -8284,7 +8284,7 @@ var writeToProcess = function (command, args, opts) { return new Promise(functio
                 _h.sent();
                 folder = path.resolve(process.cwd(), config.folder);
                 console.log("##[info] Copying all files from " + folder);
-                return [4 /*yield*/, exec("cp -rvT " + folder + "/* ./", { env: env, cwd: REPO_TEMP })];
+                return [4 /*yield*/, exec("rsync -avz " + folder + "/ ./ --exclude=\".git\"", { env: env, cwd: REPO_TEMP })];
             case 26:
                 _e = _h.sent(), stdout = _e.stdout, stderr = _e.stderr;
                 console.log('stdout:', stdout);
